@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		049A2EB525F16996009A04FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EB425F16996009A04FA /* AppDelegate.swift */; };
 		049A2EB725F16996009A04FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EB625F16996009A04FA /* SceneDelegate.swift */; };
-		049A2EB925F16996009A04FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EB825F16996009A04FA /* ViewController.swift */; };
 		049A2EBC25F16996009A04FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A2EBA25F16996009A04FA /* Main.storyboard */; };
 		049A2EBE25F1699B009A04FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049A2EBD25F1699B009A04FA /* Assets.xcassets */; };
 		049A2EC125F1699B009A04FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A2EBF25F1699B009A04FA /* LaunchScreen.storyboard */; };
+		049A2ECD25F16ACD009A04FA /* ReposListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2ECC25F16ACD009A04FA /* ReposListContract.swift */; };
+		049A2ED125F16AEA009A04FA /* ReposListPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */; };
+		049A2ED425F16B07009A04FA /* ReposListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2ED325F16B07009A04FA /* ReposListViewController.swift */; };
+		049A2EF825F176C2009A04FA /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EF725F176C2009A04FA /* DiContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		049A2EB125F16996009A04FA /* iOSTechnicalTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTechnicalTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A2EB425F16996009A04FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049A2EB625F16996009A04FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		049A2EB825F16996009A04FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		049A2EBB25F16996009A04FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		049A2EBD25F1699B009A04FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049A2EC025F1699B009A04FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		049A2EC225F1699B009A04FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049A2ECC25F16ACD009A04FA /* ReposListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListContract.swift; sourceTree = "<group>"; };
+		049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListPresenterImp.swift; sourceTree = "<group>"; };
+		049A2ED325F16B07009A04FA /* ReposListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListViewController.swift; sourceTree = "<group>"; };
+		049A2EF725F176C2009A04FA /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		049A2EB325F16996009A04FA /* iOSTechnicalTask */ = {
 			isa = PBXGroup;
 			children = (
+				049A2ECA25F16AAC009A04FA /* UI */,
 				049A2EB425F16996009A04FA /* AppDelegate.swift */,
 				049A2EB625F16996009A04FA /* SceneDelegate.swift */,
-				049A2EB825F16996009A04FA /* ViewController.swift */,
 				049A2EBA25F16996009A04FA /* Main.storyboard */,
 				049A2EBD25F1699B009A04FA /* Assets.xcassets */,
 				049A2EBF25F1699B009A04FA /* LaunchScreen.storyboard */,
 				049A2EC225F1699B009A04FA /* Info.plist */,
 			);
 			path = iOSTechnicalTask;
+			sourceTree = "<group>";
+		};
+		049A2EC925F16A9E009A04FA /* ReposList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReposList;
+			sourceTree = "<group>";
+		};
+		049A2ECA25F16AAC009A04FA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				049A2EF625F176A8009A04FA /* Di */,
+				049A2ECB25F16AB0009A04FA /* RepoDetails */,
+				049A2EC925F16A9E009A04FA /* ReposList */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		049A2ECB25F16AB0009A04FA /* RepoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				049A2ECC25F16ACD009A04FA /* ReposListContract.swift */,
+				049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */,
+				049A2ED325F16B07009A04FA /* ReposListViewController.swift */,
+			);
+			path = RepoDetails;
+			sourceTree = "<group>";
+		};
+		049A2EF625F176A8009A04FA /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				049A2EF725F176C2009A04FA /* DiContainer.swift */,
+			);
+			path = Di;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +178,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049A2EB925F16996009A04FA /* ViewController.swift in Sources */,
+				049A2EF825F176C2009A04FA /* DiContainer.swift in Sources */,
+				049A2ED125F16AEA009A04FA /* ReposListPresenterImp.swift in Sources */,
+				049A2ED425F16B07009A04FA /* ReposListViewController.swift in Sources */,
+				049A2ECD25F16ACD009A04FA /* ReposListContract.swift in Sources */,
 				049A2EB525F16996009A04FA /* AppDelegate.swift in Sources */,
 				049A2EB725F16996009A04FA /* SceneDelegate.swift in Sources */,
 			);
