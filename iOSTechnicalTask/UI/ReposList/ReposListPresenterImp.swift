@@ -17,3 +17,11 @@ class ReposListPresenterImp:  ReposListPresenter {
         self.view = nil
     }
 }
+
+extension ReposListPresenterImp: NetworkErrorViewDelegate {
+    
+    func networkErrorViewDidTapRetry(_ networkErrorView: NetworkErrorView) {
+
+    }
+    
+}

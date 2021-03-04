@@ -16,6 +16,13 @@
 		049A2ED125F16AEA009A04FA /* ReposListPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */; };
 		049A2ED425F16B07009A04FA /* ReposListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2ED325F16B07009A04FA /* ReposListViewController.swift */; };
 		049A2EF825F176C2009A04FA /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EF725F176C2009A04FA /* DiContainer.swift */; };
+		049A2F0425F17A04009A04FA /* ReposListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2F0125F17A04009A04FA /* ReposListCell.swift */; };
+		049A2F0625F17A04009A04FA /* ReposListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049A2F0325F17A04009A04FA /* ReposListCell.xib */; };
+		049A2F0B25F17B70009A04FA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2F0A25F17B70009A04FA /* UIView+Extensions.swift */; };
+		049A2F1425F18CE9009A04FA /* NoSearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2F1125F18CE9009A04FA /* NoSearchResultsCell.swift */; };
+		049A2F1625F18CE9009A04FA /* NoSearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049A2F1325F18CE9009A04FA /* NoSearchResultsCell.xib */; };
+		049A2F2425F18F6B009A04FA /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2F2225F18F6B009A04FA /* NetworkErrorView.swift */; };
+		049A2F2525F18F6B009A04FA /* NetworkErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049A2F2325F18F6B009A04FA /* NetworkErrorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,13 @@
 		049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListPresenterImp.swift; sourceTree = "<group>"; };
 		049A2ED325F16B07009A04FA /* ReposListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListViewController.swift; sourceTree = "<group>"; };
 		049A2EF725F176C2009A04FA /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
+		049A2F0125F17A04009A04FA /* ReposListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListCell.swift; sourceTree = "<group>"; };
+		049A2F0325F17A04009A04FA /* ReposListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReposListCell.xib; sourceTree = "<group>"; };
+		049A2F0A25F17B70009A04FA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		049A2F1125F18CE9009A04FA /* NoSearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsCell.swift; sourceTree = "<group>"; };
+		049A2F1325F18CE9009A04FA /* NoSearchResultsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoSearchResultsCell.xib; sourceTree = "<group>"; };
+		049A2F2225F18F6B009A04FA /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		049A2F2325F18F6B009A04FA /* NetworkErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkErrorView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,7 @@
 		049A2EC925F16A9E009A04FA /* ReposList */ = {
 			isa = PBXGroup;
 			children = (
+				049A2F0F25F18CD5009A04FA /* Cells */,
 				049A2ECC25F16ACD009A04FA /* ReposListContract.swift */,
 				049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */,
 				049A2ED325F16B07009A04FA /* ReposListViewController.swift */,
@@ -86,6 +101,8 @@
 		049A2ECA25F16AAC009A04FA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				049A2F1925F18E5D009A04FA /* NetworkErrorView */,
+				049A2F0925F17B64009A04FA /* Extensions */,
 				049A2EF625F176A8009A04FA /* Di */,
 				049A2ECB25F16AB0009A04FA /* RepoDetails */,
 				049A2EC925F16A9E009A04FA /* ReposList */,
@@ -106,6 +123,50 @@
 				049A2EF725F176C2009A04FA /* DiContainer.swift */,
 			);
 			path = Di;
+			sourceTree = "<group>";
+		};
+		049A2F0025F179F6009A04FA /* ReposListCell */ = {
+			isa = PBXGroup;
+			children = (
+				049A2F0125F17A04009A04FA /* ReposListCell.swift */,
+				049A2F0325F17A04009A04FA /* ReposListCell.xib */,
+			);
+			path = ReposListCell;
+			sourceTree = "<group>";
+		};
+		049A2F0925F17B64009A04FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				049A2F0A25F17B70009A04FA /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		049A2F0F25F18CD5009A04FA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				049A2F1025F18CDA009A04FA /* NoResultCell */,
+				049A2F0025F179F6009A04FA /* ReposListCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		049A2F1025F18CDA009A04FA /* NoResultCell */ = {
+			isa = PBXGroup;
+			children = (
+				049A2F1125F18CE9009A04FA /* NoSearchResultsCell.swift */,
+				049A2F1325F18CE9009A04FA /* NoSearchResultsCell.xib */,
+			);
+			path = NoResultCell;
+			sourceTree = "<group>";
+		};
+		049A2F1925F18E5D009A04FA /* NetworkErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				049A2F2225F18F6B009A04FA /* NetworkErrorView.swift */,
+				049A2F2325F18F6B009A04FA /* NetworkErrorView.xib */,
+			);
+			path = NetworkErrorView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +228,10 @@
 			files = (
 				049A2EC125F1699B009A04FA /* LaunchScreen.storyboard in Resources */,
 				049A2EBE25F1699B009A04FA /* Assets.xcassets in Resources */,
+				049A2F2525F18F6B009A04FA /* NetworkErrorView.xib in Resources */,
+				049A2F1625F18CE9009A04FA /* NoSearchResultsCell.xib in Resources */,
 				049A2EBC25F16996009A04FA /* Main.storyboard in Resources */,
+				049A2F0625F17A04009A04FA /* ReposListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,10 +243,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				049A2EF825F176C2009A04FA /* DiContainer.swift in Sources */,
+				049A2F1425F18CE9009A04FA /* NoSearchResultsCell.swift in Sources */,
 				049A2ED125F16AEA009A04FA /* ReposListPresenterImp.swift in Sources */,
 				049A2ED425F16B07009A04FA /* ReposListViewController.swift in Sources */,
 				049A2ECD25F16ACD009A04FA /* ReposListContract.swift in Sources */,
 				049A2EB525F16996009A04FA /* AppDelegate.swift in Sources */,
+				049A2F2425F18F6B009A04FA /* NetworkErrorView.swift in Sources */,
+				049A2F0425F17A04009A04FA /* ReposListCell.swift in Sources */,
+				049A2F0B25F17B70009A04FA /* UIView+Extensions.swift in Sources */,
 				049A2EB725F16996009A04FA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

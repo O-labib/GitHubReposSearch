@@ -8,8 +8,9 @@
 import Foundation
 
 protocol ReposListView {
+    func didFailLoadingData(withErrorMsg errorMsg: String)
 }
-protocol ReposListPresenter {
+protocol ReposListPresenter: NetworkErrorViewDelegate {
     func attach(view: ReposListView)
     func detachView()
 }
