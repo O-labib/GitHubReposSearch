@@ -76,6 +76,9 @@
 		049A2EC925F16A9E009A04FA /* ReposList */ = {
 			isa = PBXGroup;
 			children = (
+				049A2ECC25F16ACD009A04FA /* ReposListContract.swift */,
+				049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */,
+				049A2ED325F16B07009A04FA /* ReposListViewController.swift */,
 			);
 			path = ReposList;
 			sourceTree = "<group>";
@@ -93,9 +96,6 @@
 		049A2ECB25F16AB0009A04FA /* RepoDetails */ = {
 			isa = PBXGroup;
 			children = (
-				049A2ECC25F16ACD009A04FA /* ReposListContract.swift */,
-				049A2ED025F16AEA009A04FA /* ReposListPresenterImp.swift */,
-				049A2ED325F16B07009A04FA /* ReposListViewController.swift */,
 			);
 			path = RepoDetails;
 			sourceTree = "<group>";
