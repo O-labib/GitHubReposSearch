@@ -33,6 +33,11 @@ class ReposListCell: UITableViewCell {
         super.layoutSubviews()
         avatarImageView.setCircular()
     }
+    
+    func bindWith(repo: GithubRepoModel) {
+        repoTitleLabel.text = repo.title
+        repoOwnerNameLabel.text = repo.owner?.name
+    }
 }
 
 

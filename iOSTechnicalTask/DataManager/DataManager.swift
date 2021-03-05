@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol DataManager {
-    func getRepos(containing searchQuery: String?) -> Observable<[GithubRepoModel]>
+    func getRepos(containing searchQuery: String?, with paginationInput: PaginationInput) -> Observable<PaginatedRepos>
 }

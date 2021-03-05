@@ -12,18 +12,32 @@ class DataManagerImp {
     private let url = "https://api.github.com/repositories"
     private let urlSession = URLSession.shared
     private let jsonDecoder = JSONDecoder()
-    
+    private let paginationHelper = PaginationHelper.shared
     private var allRepos: [GithubRepoModel]?
 }
 extension DataManagerImp: DataManager {
     
-    func getRepos(containing searchQuery: String?) -> Observable<[GithubRepoModel]> {
-        
+    func getRepos(containing searchQuery: String?, with paginationInput: PaginationInput) -> Observable<PaginatedRepos> {
+        getAllRepos()
+            .map({ (allRepos) -> [GithubRepoModel] in
+                return self.filterRepos(allRepos, forTitlesContaining: searchQuery)
+            })
+            .flatMap { (repos) -> Observable<PaginatedRepos> in
+                return self.paginationHelper.getPaginatedRepos(with: paginationInput,
+                                                                 from: repos)
+            }
+    }
+    
+    private func getAllRepos() -> Observable<[GithubRepoModel]> {
+        guard allRepos == nil else {
+            return Observable.just(allRepos!)
+        }
+        return fetchAllReposFromApi()
+    }
+    private func fetchAllReposFromApi() -> Observable<[GithubRepoModel]> {
         return Observable.create { observer in
-            //MARK: create URLSession dataTask
             let task = self.urlSession.dataTask(with: URL(string: self.url)!) { (data,
                                                                                  response, error) in
-                
                 guard
                     let data = data,
                     let httpResponse = response as? HTTPURLResponse,
@@ -43,24 +57,18 @@ extension DataManagerImp: DataManager {
                         observer.onError(error!)
                     }
                 } catch {
-                    //MARK: observer onNext event
                     observer.onError(error)
                 }
-                //MARK: observer onCompleted event
                 observer.onCompleted()
             }
             task.resume()
-            //MARK: return our disposable
             return Disposables.create {
                 task.cancel()
             }
         }
     }
-    
-    func getAllReposIfEmptySearchQuery(searchQuery: String?) -> Observable<[GithubRepoModel]> {
-        guard allRepos == nil else {
-            return Observable.just(allRepos!)
-        }
-        fatalError()
+    private func filterRepos(_ repos: [GithubRepoModel], forTitlesContaining searchQuery: String?) -> [GithubRepoModel] {
+        return repos.filter({$0.title?.contains(searchQuery ?? "") == true})
     }
 }
+

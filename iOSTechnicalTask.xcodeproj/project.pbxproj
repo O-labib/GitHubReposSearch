@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0485ECEC25F2630C0044F610 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485ECEB25F2630C0044F610 /* Models.swift */; };
+		0485ECF025F263790044F610 /* PaginationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485ECEF25F263790044F610 /* PaginationHelper.swift */; };
+		0485ECFB25F265400044F610 /* PaginatedRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485ECFA25F265400044F610 /* PaginatedRepos.swift */; };
 		049A2EB525F16996009A04FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EB425F16996009A04FA /* AppDelegate.swift */; };
 		049A2EB725F16996009A04FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A2EB625F16996009A04FA /* SceneDelegate.swift */; };
 		049A2EBC25F16996009A04FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A2EBA25F16996009A04FA /* Main.storyboard */; };
@@ -30,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0485ECEB25F2630C0044F610 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0485ECEF25F263790044F610 /* PaginationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHelper.swift; sourceTree = "<group>"; };
+		0485ECFA25F265400044F610 /* PaginatedRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedRepos.swift; sourceTree = "<group>"; };
 		049A2EB125F16996009A04FA /* iOSTechnicalTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTechnicalTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A2EB425F16996009A04FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049A2EB625F16996009A04FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0485ECE925F262FA0044F610 /* PaginationHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0485ECEB25F2630C0044F610 /* Models.swift */,
+				0485ECEF25F263790044F610 /* PaginationHelper.swift */,
+			);
+			path = PaginationHelper;
+			sourceTree = "<group>";
+		};
 		049A2EA825F16996009A04FA = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +104,7 @@
 		049A2EB325F16996009A04FA /* iOSTechnicalTask */ = {
 			isa = PBXGroup;
 			children = (
-				049F1E8625F221DA00143DA5 /* Repo */,
+				049F1E8625F221DA00143DA5 /* DataManager */,
 				049A2ECA25F16AAC009A04FA /* UI */,
 				049A2EB425F16996009A04FA /* AppDelegate.swift */,
 				049A2EB625F16996009A04FA /* SceneDelegate.swift */,
@@ -183,20 +198,22 @@
 			path = NetworkErrorView;
 			sourceTree = "<group>";
 		};
-		049F1E8625F221DA00143DA5 /* Repo */ = {
+		049F1E8625F221DA00143DA5 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				0485ECE925F262FA0044F610 /* PaginationHelper */,
 				049F1E9225F2276F00143DA5 /* Models */,
 				049F1E8725F2229A00143DA5 /* DataManager.swift */,
 				049F1E8B25F222AD00143DA5 /* DataManagerImp.swift */,
 			);
-			path = Repo;
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		049F1E9225F2276F00143DA5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				049F1E9325F2278300143DA5 /* GithubRepoModel.swift */,
+				0485ECFA25F265400044F610 /* PaginatedRepos.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,10 +361,13 @@
 				049F1E9425F2278300143DA5 /* GithubRepoModel.swift in Sources */,
 				049A2EB525F16996009A04FA /* AppDelegate.swift in Sources */,
 				049A2F2425F18F6B009A04FA /* NetworkErrorView.swift in Sources */,
+				0485ECF025F263790044F610 /* PaginationHelper.swift in Sources */,
 				049A2F0425F17A04009A04FA /* ReposListCell.swift in Sources */,
+				0485ECFB25F265400044F610 /* PaginatedRepos.swift in Sources */,
 				049F1E8825F2229A00143DA5 /* DataManager.swift in Sources */,
 				049A2F0B25F17B70009A04FA /* UIView+Extensions.swift in Sources */,
 				049A2EB725F16996009A04FA /* SceneDelegate.swift in Sources */,
+				0485ECEC25F2630C0044F610 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

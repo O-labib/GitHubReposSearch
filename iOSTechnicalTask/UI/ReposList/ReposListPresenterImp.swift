@@ -25,10 +25,10 @@ class ReposListPresenterImp:  ReposListPresenter {
     }
     
     func getRepos(containing searchQuery: String? = nil) {
-        dataManager.getRepos(containing: searchQuery)
+        dataManager.getRepos(containing: searchQuery, with: PaginationInput(page: 24, itemsPerPage: 4))
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (repos) in
-                self?.view?.reposWereLoaded(repos)
+                self?.view?.reposWereLoaded(repos.repos)
             }, onError: { [weak self] (error) in
                 self?.view?.didFailLoadingRepos(withErrorMsg: error.localizedDescription)
             }).disposed(by: disposeBag)
