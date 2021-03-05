@@ -6,12 +6,19 @@
 //
 
 import UIKit
-
+protocol ReposAdapterDelegate: class {
+    func tableViewNeedsToPaginateRepos()
+}
 class ReposAdapter: BaseAdapter {
     
     var repos: [GithubRepoModel]
-    init(repos: [GithubRepoModel]) {
+    weak var delegate: ReposAdapterDelegate?
+    
+    var isPaginating = false
+    
+    init(repos: [GithubRepoModel], delegate: ReposAdapterDelegate) {
         self.repos = repos
+        self.delegate = delegate
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         repos.count
@@ -23,4 +30,16 @@ class ReposAdapter: BaseAdapter {
         return cell
     }
     
+    func appendReposUponPagination(_ repos: [GithubRepoModel]) {
+        isPaginating = false
+        self.repos.append(contentsOf: repos)
+    }
+    
+    override func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for index in indexPaths where index.row == repos.count - 6 && !isPaginating {
+            isPaginating = true
+            self.delegate?.tableViewNeedsToPaginateRepos()
+            break
+        }
+    }
 }

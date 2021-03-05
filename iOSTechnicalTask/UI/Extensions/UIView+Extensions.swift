@@ -33,4 +33,17 @@ extension UITableView {
         register(UINib(nibName: nibFileName, bundle: bundle),
                  forCellReuseIdentifier: nibFileName)
     }
+    func insertNewlyPaginatedData(_ data: [Any]) {
+        guard data.isEmpty == false else { return }
+
+        var lastRowIndex = numberOfRows(inSection: 0) - 1
+        var newIndices: [IndexPath] = []
+        
+        for _ in 0..<data.count {
+            lastRowIndex += 1
+            newIndices.append(IndexPath(row: lastRowIndex, section: 0))
+        }
+        
+        insertRows(at: newIndices, with: .none)
+    }
 }

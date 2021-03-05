@@ -9,7 +9,7 @@ import Foundation
 
 struct PaginationInput {
     var page: Int
-    var itemsPerPage: Int
+    var itemsPerPage: Int = 10
 }
 
 struct PaginationInfo {
@@ -17,4 +17,8 @@ struct PaginationInfo {
     var itemsPerPage: Int
     var totalPagesCount: Int
     var hasNext: Bool
+    
+    var nextPageInput: PaginationInput {
+        return PaginationInput(page: currentPage + 1)
+    }
 }

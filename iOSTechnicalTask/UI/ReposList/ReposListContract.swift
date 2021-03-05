@@ -10,6 +10,7 @@ import Foundation
 protocol ReposListView {
     func didFailLoadingRepos(withErrorMsg errorMsg: String?)
     func reposWereLoaded(_ repos: [GithubRepoModel])
+    func reposWerePaginated(newRepos: [GithubRepoModel])
     func showLoader()
     func hideLoader()
 }
@@ -17,4 +18,5 @@ protocol ReposListPresenter: NetworkErrorViewDelegate {
     func attach(view: ReposListView)
     func detachView()
     func getRepos(containing searchQuery: String?)
+    func paginateRepos()
 }

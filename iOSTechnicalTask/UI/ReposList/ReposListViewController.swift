@@ -19,6 +19,7 @@ class ReposListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.prefetchDataSource = self
         }
     }
     @IBOutlet weak var networkErrorView: NetworkErrorView! {
@@ -46,6 +47,10 @@ class ReposListViewController: UIViewController {
 }
 
 extension ReposListViewController: ReposListView {
+    func reposWerePaginated(newRepos: [GithubRepoModel]) {
+        (tableViewAdapter as? ReposAdapter)?.appendReposUponPagination(newRepos)
+        tableView.insertNewlyPaginatedData(newRepos)
+    }
 
     func showLoader() {
         activityIndicator.startAnimating()
@@ -66,7 +71,8 @@ extension ReposListViewController: ReposListView {
     }
     private func updateTableViewForResults(_ repos: [GithubRepoModel]){
         guard repos.isEmpty == false else { return }
-        tableViewAdapter = ReposAdapter(repos: repos)
+        tableViewAdapter = ReposAdapter(repos: repos,
+                                        delegate: self)
         tableView.reloadSections([0], with: .fade)
     }
     private func showEmptyCellIfNoResults(_ repos: [GithubRepoModel]){
@@ -109,6 +115,19 @@ extension ReposListViewController: UITableViewDataSource {
         tableViewAdapter.tableView(tableView, cellForRowAt: indexPath)
     }
     
-    
 }
 
+extension ReposListViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        tableViewAdapter.tableView(tableView, prefetchRowsAt: indexPaths)
+    }
+    
+}
+extension ReposListViewController: ReposAdapterDelegate {
+   
+    func tableViewNeedsToPaginateRepos() {
+        presenter.paginateRepos()
+    }
+
+}
