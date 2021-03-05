@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2BEAF8FF-FC72-485B-96D3-8885EF42D6F9"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA30698E-F46E-4852-928E-7CD94DFFB842"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getRepos(containing:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA30698E-F46E-4852-928E-7CD94DFFB842 - c5de4658d1a63919"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOSTechnicalTask.ReposListPresenterImp.getRepos(containing: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1044">
+               </Location>
+               <Location
+                  uuid = "BA30698E-F46E-4852-928E-7CD94DFFB842 - f44da39dcb1cb717"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Error) -&gt; () in iOSTechnicalTask.ReposListPresenterImp.getRepos(containing: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "754">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03C643A6-06B6-4E34-8CE5-5A83EFABD9B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getRepos(containing:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "03C643A6-06B6-4E34-8CE5-5A83EFABD9B7 - c5de4658d1a638db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOSTechnicalTask.ReposListPresenterImp.getRepos(containing: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "03C643A6-06B6-4E34-8CE5-5A83EFABD9B7 - e35714927da72a3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;iOSTechnicalTask.GithubRepoModel&gt;) -&gt; () in iOSTechnicalTask.ReposListPresenterImp.getRepos(containing: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "03C643A6-06B6-4E34-8CE5-5A83EFABD9B7 - f44da39dcb1cb6d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Error) -&gt; () in iOSTechnicalTask.ReposListPresenterImp.getRepos(containing: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "115">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F335AF3-0DD3-47A0-9C80-8B2E3A1EA239"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getRepos(containing:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D171E0F6-1803-4851-BDF4-27AE514D1EFC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "reposWereLoaded(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A954055-4659-490A-AB02-7ED1654DF732"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "didFailLoadingRepos(withErrorMsg:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77A5CE94-D158-4117-A5F5-F57A1963A159"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "networkErrorViewDidTapRetry(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

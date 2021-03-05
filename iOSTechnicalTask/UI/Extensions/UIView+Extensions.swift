@@ -19,6 +19,12 @@ extension UIView {
         self.layer.cornerRadius = bounds.height / 2
         self.layer.masksToBounds = true
     }
+    func hide() {
+        isHidden = true
+    }
+    func reveal() {
+        isHidden = false
+    }
 }
 
 extension UITableView {

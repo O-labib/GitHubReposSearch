@@ -19,7 +19,8 @@ class NetworkErrorView:UIView {
     
     //MARK: Variable
     var view:UIView!
-
+    @IBOutlet weak var errorMsgLabel: UILabel!
+    
     weak var delegate : NetworkErrorViewDelegate?
 
     
@@ -66,6 +67,11 @@ class NetworkErrorView:UIView {
         delegate?.networkErrorViewDidTapRetry(self)
     }
     
+    func setErrorMsg(_ errorMSg: String?) {
+        if let errorMsg = errorMSg {
+            self.errorMsgLabel.text = errorMsg
+        }
+    }
 }
 
     

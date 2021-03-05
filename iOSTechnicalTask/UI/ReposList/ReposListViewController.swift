@@ -33,13 +33,25 @@ class ReposListViewController: UIViewController {
 
         presenter.attach(view: self)
         registerTableViewCells()
-        setupSearchController()
+        
+        presenter.getRepos(containing: .any)
     }
     
     private func registerTableViewCells(){
         tableView.registerCellFromNib(named: ReposListCell.identifier)
     }
 
+    
+}
+
+extension ReposListViewController: ReposListView {
+
+    func reposWereLoaded(_ repos: [GithubRepoModel]) {
+//        tableView.reloadData()
+        setupSearchController()
+        tableView.reveal()
+        networkErrorView.hide()
+    }
     private func setupSearchController(){
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -47,6 +59,12 @@ class ReposListViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+    func didFailLoadingRepos(withErrorMsg errorMsg: String?) {
+        tableView.hide()
+        networkErrorView.reveal()
+        networkErrorView.setErrorMsg(errorMsg)
+    }
+    
 }
 extension ReposListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -55,15 +73,6 @@ extension ReposListViewController: UISearchResultsUpdating {
         print(searchBar.text)
     }
 }
-
-extension ReposListViewController: ReposListView {
-    
-    func didFailLoadingData(withErrorMsg errorMsg: String) {
-        networkErrorView.isHidden = false
-    }
-    
-}
-
 extension ReposListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         12

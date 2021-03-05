@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+
 protocol DataManager {
-    
+    func getRepos(containing searchQuery: String?) -> Observable<[GithubRepoModel]>
 }

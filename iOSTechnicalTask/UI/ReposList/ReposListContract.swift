@@ -8,9 +8,11 @@
 import Foundation
 
 protocol ReposListView {
-    func didFailLoadingData(withErrorMsg errorMsg: String)
+    func didFailLoadingRepos(withErrorMsg errorMsg: String?)
+    func reposWereLoaded(_ repos: [GithubRepoModel])
 }
 protocol ReposListPresenter: NetworkErrorViewDelegate {
     func attach(view: ReposListView)
     func detachView()
+    func getRepos(containing searchQuery: String?)
 }

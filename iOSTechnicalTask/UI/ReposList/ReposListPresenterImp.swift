@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import RxSwift
 
 class ReposListPresenterImp:  ReposListPresenter {
     
     var dataManager: DataManager
+    let disposeBag = DisposeBag()
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
@@ -21,12 +23,27 @@ class ReposListPresenterImp:  ReposListPresenter {
     func detachView() {
         self.view = nil
     }
+    
+    func getRepos(containing searchQuery: String? = nil) {
+        dataManager.getRepos(containing: searchQuery)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (repos) in
+                self?.view?.reposWereLoaded(repos)
+            }, onError: { [weak self] (error) in
+                self?.view?.didFailLoadingRepos(withErrorMsg: error.localizedDescription)
+            }).disposed(by: disposeBag)
+    }
+    
 }
 
 extension ReposListPresenterImp: NetworkErrorViewDelegate {
     
     func networkErrorViewDidTapRetry(_ networkErrorView: NetworkErrorView) {
-
+        self.getRepos(containing: .any)
     }
     
+}
+
+extension String {
+    static let any: String? = nil
 }
