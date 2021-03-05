@@ -9,6 +9,11 @@ import Foundation
 
 class ReposListPresenterImp:  ReposListPresenter {
     
+    var dataManager: DataManager
+    
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
     var view: ReposListView?
     func attach(view: ReposListView) {
         self.view = view

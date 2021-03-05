@@ -6,11 +6,11 @@
 //
 
 import Foundation
-
 class DiContainer {
     static var instance = DiContainer()
     private init () {}
+    var dataManager = DataManagerImp()
     func resolveReposListPresenter() -> ReposListPresenter {
-        return ReposListPresenterImp()
+        return ReposListPresenterImp(dataManager: dataManager)
     }
 }
