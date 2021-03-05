@@ -8,6 +8,7 @@
 import UIKit
 protocol ReposAdapterDelegate: class {
     func tableViewNeedsToPaginateRepos()
+    func repoWasSelected(_ repo: GithubRepoModel)
 }
 class ReposAdapter: BaseAdapter {
     
@@ -41,5 +42,9 @@ class ReposAdapter: BaseAdapter {
             self.delegate?.tableViewNeedsToPaginateRepos()
             break
         }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repo = repos[indexPath.row]
+        delegate?.repoWasSelected(repo)
     }
 }

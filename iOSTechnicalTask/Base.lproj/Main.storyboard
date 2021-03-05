@@ -55,6 +55,91 @@
             </objects>
             <point key="canvasLocation" x="760.86956521739137" y="47.544642857142854"/>
         </scene>
+        <!--Repo Details View Controller-->
+        <scene sceneID="fCo-JZ-zsv">
+            <objects>
+                <viewController storyboardIdentifier="RepoDetailsViewController" id="fdM-vr-Ws4" customClass="RepoDetailsViewController" customModule="iOSTechnicalTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0US-Kz-XIM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="STw-7D-XUJ">
+                                <rect key="frame" x="16" y="60" width="382" height="776"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lsb-lA-MY6">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82d-vF-Jgk">
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZS-gc-6Gn">
+                                                <rect key="frame" x="0.0" y="23.5" width="382" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qZS-gc-6Gn" secondAttribute="trailing" id="gYt-Yj-vn4"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF1-aT-QeM">
+                                        <rect key="frame" x="0.0" y="60" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E8Q-qZ-8uv">
+                                        <rect key="frame" x="0.0" y="96.5" width="382" height="62"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK2-Rv-bzy">
+                                                <rect key="frame" x="0.0" y="4" width="54" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="54" id="5OU-62-vb5"/>
+                                                    <constraint firstAttribute="width" secondItem="lK2-Rv-bzy" secondAttribute="height" id="U05-Um-Djo"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97m-ei-OdX">
+                                                <rect key="frame" x="62" y="21" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="lK2-Rv-bzy" firstAttribute="top" secondItem="E8Q-qZ-8uv" secondAttribute="top" constant="4" id="89o-90-0M6"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-k7-Fbr">
+                                        <rect key="frame" x="0.0" y="174.5" width="382" height="601.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mS8-n7-sSG"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <constraints>
+                            <constraint firstItem="STw-7D-XUJ" firstAttribute="top" secondItem="mS8-n7-sSG" secondAttribute="top" constant="16" id="3I9-ps-dIl"/>
+                            <constraint firstItem="STw-7D-XUJ" firstAttribute="centerY" secondItem="0US-Kz-XIM" secondAttribute="centerY" id="5iO-9g-aTV"/>
+                            <constraint firstItem="STw-7D-XUJ" firstAttribute="leading" secondItem="mS8-n7-sSG" secondAttribute="leading" constant="16" id="h4j-yS-nma"/>
+                            <constraint firstItem="STw-7D-XUJ" firstAttribute="centerX" secondItem="0US-Kz-XIM" secondAttribute="centerX" id="lcT-p0-zfJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="repoDescriptionLabel" destination="qZS-gc-6Gn" id="Jo5-DR-hQD"/>
+                        <outlet property="repoOwnerAvatarImageView" destination="lK2-Rv-bzy" id="x1P-cF-gpt"/>
+                        <outlet property="repoOwnerNameLabel" destination="97m-ei-OdX" id="Feb-Af-9dg"/>
+                        <outlet property="repoTitleLabel" destination="82d-vF-Jgk" id="KmW-QL-cPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nW7-ry-GP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="48"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="pZg-ck-t87">
             <objects>
@@ -77,6 +162,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

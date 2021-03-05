@@ -20,6 +20,7 @@ class ReposListViewController: UIViewController {
         didSet {
             tableView.dataSource = self
             tableView.prefetchDataSource = self
+            tableView.delegate = self
         }
     }
     @IBOutlet weak var networkErrorView: NetworkErrorView! {
@@ -34,7 +35,8 @@ class ReposListViewController: UIViewController {
 
         presenter.attach(view: self)
         registerTableViewCells()
-        
+        navigationItem.title = "GitHub Repos"
+
         presenter.getRepos(containing: .any)
     }
     
@@ -116,7 +118,11 @@ extension ReposListViewController: UITableViewDataSource {
     }
     
 }
-
+extension ReposListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableViewAdapter.tableView(tableView, didSelectRowAt: indexPath)
+    }
+}
 extension ReposListViewController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -125,6 +131,13 @@ extension ReposListViewController: UITableViewDataSourcePrefetching {
     
 }
 extension ReposListViewController: ReposAdapterDelegate {
+    
+    func repoWasSelected(_ repo: GithubRepoModel) {
+        let repoDetailsVc = RepoDetailsViewController.createFromStoryboard(with: repo)
+        navigationController?.pushViewController(repoDetailsVc, animated: true)
+//        present(repoDetailsVc, animated: true, completion: nil)
+//        print(repo)
+    }
    
     func tableViewNeedsToPaginateRepos() {
         presenter.paginateRepos()

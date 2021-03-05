@@ -32,6 +32,7 @@
 		049F1E8825F2229A00143DA5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F1E8725F2229A00143DA5 /* DataManager.swift */; };
 		049F1E8C25F222AD00143DA5 /* DataManagerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F1E8B25F222AD00143DA5 /* DataManagerImp.swift */; };
 		049F1E9425F2278300143DA5 /* GithubRepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F1E9325F2278300143DA5 /* GithubRepoModel.swift */; };
+		04CCDE5625F2A80D003974AA /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCDE5525F2A80D003974AA /* RepoDetailsViewController.swift */; };
 		92568E102653554AF5E0A94D /* Pods_iOSTechnicalTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B9ACE461966C4AC51B232C /* Pods_iOSTechnicalTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		049F1E8725F2229A00143DA5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		049F1E8B25F222AD00143DA5 /* DataManagerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerImp.swift; sourceTree = "<group>"; };
 		049F1E9325F2278300143DA5 /* GithubRepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoModel.swift; sourceTree = "<group>"; };
+		04CCDE5525F2A80D003974AA /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		1D16B53E633567E29CD567C1 /* Pods-iOSTechnicalTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTechnicalTask.release.xcconfig"; path = "Target Support Files/Pods-iOSTechnicalTask/Pods-iOSTechnicalTask.release.xcconfig"; sourceTree = "<group>"; };
 		BF1AF83E007DB6ED546DA4D7 /* Pods-iOSTechnicalTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTechnicalTask.debug.xcconfig"; path = "Target Support Files/Pods-iOSTechnicalTask/Pods-iOSTechnicalTask.debug.xcconfig"; sourceTree = "<group>"; };
 		F0B9ACE461966C4AC51B232C /* Pods_iOSTechnicalTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTechnicalTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 		049A2ECB25F16AB0009A04FA /* RepoDetails */ = {
 			isa = PBXGroup;
 			children = (
+				04CCDE5525F2A80D003974AA /* RepoDetailsViewController.swift */,
 			);
 			path = RepoDetails;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				0485ED0125F279C60044F610 /* BaseAdapter.swift in Sources */,
 				049F1E8C25F222AD00143DA5 /* DataManagerImp.swift in Sources */,
 				049A2ED125F16AEA009A04FA /* ReposListPresenterImp.swift in Sources */,
+				04CCDE5625F2A80D003974AA /* RepoDetailsViewController.swift in Sources */,
 				049A2ED425F16B07009A04FA /* ReposListViewController.swift in Sources */,
 				049A2ECD25F16ACD009A04FA /* ReposListContract.swift in Sources */,
 				049F1E9425F2278300143DA5 /* GithubRepoModel.swift in Sources */,

@@ -10,10 +10,11 @@ import UIKit
 struct GithubRepoModel: Decodable {
     var id: Int?
     var title: String?
+    var description: String?
     var owner: RepoOwner?
     
     private enum CodingKeys : String, CodingKey {
-        case id, title = "name", owner
+        case id, title = "name", description, owner
     }
 }
 
