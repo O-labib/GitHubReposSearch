@@ -25,15 +25,22 @@ class ReposListPresenterImp:  ReposListPresenter {
     }
     
     func getRepos(containing searchQuery: String? = nil) {
-        dataManager.getRepos(containing: searchQuery, with: PaginationInput(page: 24, itemsPerPage: 4))
+        view?.showLoader()
+        let adjustedSearchQuery = adjustSearchQueryIfTooShort(searchQuery)
+        dataManager.getRepos(containing: adjustedSearchQuery,
+                             with: PaginationInput(page: 0, itemsPerPage: 4))
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (repos) in
                 self?.view?.reposWereLoaded(repos.repos)
             }, onError: { [weak self] (error) in
                 self?.view?.didFailLoadingRepos(withErrorMsg: error.localizedDescription)
+            }, onCompleted: { [weak self] in
+                self?.view?.hideLoader()
             }).disposed(by: disposeBag)
     }
-    
+    func adjustSearchQueryIfTooShort(_ searchQuery: String?) -> String? {
+        return (searchQuery?.count ?? 0) < 2 ? nil : searchQuery
+    }
 }
 
 extension ReposListPresenterImp: NetworkErrorViewDelegate {

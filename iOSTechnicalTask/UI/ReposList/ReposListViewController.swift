@@ -14,7 +14,7 @@ class ReposListViewController: UIViewController {
         DiContainer.instance.resolveReposListPresenter()
     }()
     let searchController = UISearchController(searchResultsController: nil)
-
+    var tableViewAdapter = BaseAdapter()
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -39,6 +39,7 @@ class ReposListViewController: UIViewController {
     
     private func registerTableViewCells(){
         tableView.registerCellFromNib(named: ReposListCell.identifier)
+        tableView.registerCellFromNib(named: NoResultsCell.identifier)
     }
 
     
@@ -46,11 +47,38 @@ class ReposListViewController: UIViewController {
 
 extension ReposListViewController: ReposListView {
 
+    func showLoader() {
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoader() {
+        activityIndicator.stopAnimating()
+    }
+
     func reposWereLoaded(_ repos: [GithubRepoModel]) {
-//        tableView.reloadData()
+        updateTableViewForResults(repos)
+        showEmptyCellIfNoResults(repos)
+        
         setupSearchController()
+        
         tableView.reveal()
         networkErrorView.hide()
+    }
+    private func updateTableViewForResults(_ repos: [GithubRepoModel]){
+        guard repos.isEmpty == false else { return }
+        tableViewAdapter = ReposAdapter(repos: repos)
+        tableView.reloadSections([0], with: .fade)
+    }
+    private func showEmptyCellIfNoResults(_ repos: [GithubRepoModel]){
+        guard repos.isEmpty else { return }
+        
+        let emptyCellIsAlreadyShown = tableView.cellForRow(at: .init(row: 0,
+                                                                     section: 0)) as? NoResultsCell != nil
+        if emptyCellIsAlreadyShown {
+            return
+        }
+        tableViewAdapter = NoResultsAdapter()
+        tableView.reloadSections([0], with: .fade)
     }
     private func setupSearchController(){
         searchController.searchResultsUpdater = self
@@ -68,20 +96,17 @@ extension ReposListViewController: ReposListView {
 }
 extension ReposListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
         let searchBar = searchController.searchBar
-        print(searchBar.text)
+        presenter.getRepos(containing: searchBar.text)
     }
 }
 extension ReposListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        12
+        tableViewAdapter.tableView(tableView, numberOfRowsInSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReposListCell.identifier, for: indexPath) as? ReposListCell
-        
-        return cell!
+        tableViewAdapter.tableView(tableView, cellForRowAt: indexPath)
     }
     
     

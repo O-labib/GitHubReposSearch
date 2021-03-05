@@ -10,6 +10,8 @@ import Foundation
 protocol ReposListView {
     func didFailLoadingRepos(withErrorMsg errorMsg: String?)
     func reposWereLoaded(_ repos: [GithubRepoModel])
+    func showLoader()
+    func hideLoader()
 }
 protocol ReposListPresenter: NetworkErrorViewDelegate {
     func attach(view: ReposListView)

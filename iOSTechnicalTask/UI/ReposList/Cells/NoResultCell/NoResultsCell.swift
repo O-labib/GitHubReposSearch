@@ -7,12 +7,12 @@
 
 import UIKit
 
-class NoSearchResultsCell: UITableViewCell {
+class NoResultsCell: UITableViewCell {
 
     //MARK: Functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        selectionStyle = .none
         
     }
 }

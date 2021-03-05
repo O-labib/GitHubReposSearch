@@ -68,7 +68,10 @@ extension DataManagerImp: DataManager {
         }
     }
     private func filterRepos(_ repos: [GithubRepoModel], forTitlesContaining searchQuery: String?) -> [GithubRepoModel] {
-        return repos.filter({$0.title?.contains(searchQuery ?? "") == true})
+        guard searchQuery != nil && searchQuery != "" else {
+            return repos
+        }
+        return repos.filter({$0.title?.lowercased().contains(searchQuery!.lowercased()) == true})
     }
 }
 

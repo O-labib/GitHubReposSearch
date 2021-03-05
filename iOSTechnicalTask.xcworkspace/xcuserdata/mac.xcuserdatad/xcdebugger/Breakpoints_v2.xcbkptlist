@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E60D80D8-96C7-4673-8C14-757C8AC5030C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iOSTechnicalTask/UI/ReposList/ReposListPresenterImp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "getRepos(containing:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FEEF3EE9-95EE-47E0-A733-7538998DD148"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -33,6 +17,134 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "fetchAllReposFromApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E769D1D-44D5-486D-8DAC-79BAE9B5F506"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/DataManager/DataManagerImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "filterRepos(_:forTitlesContaining:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4E769D1D-44D5-486D-8DAC-79BAE9B5F506 - 1911abec8defef69"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOSTechnicalTask.DataManagerImp.(filterRepos in _2FCAA99F9292B0D27D834DE917E1FF06)(_: Swift.Array&lt;iOSTechnicalTask.GithubRepoModel&gt;, forTitlesContaining: Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Array&lt;iOSTechnicalTask.GithubRepoModel&gt;"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/DataManager/DataManagerImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "413">
+               </Location>
+               <Location
+                  uuid = "4E769D1D-44D5-486D-8DAC-79BAE9B5F506 - 6ac1dc97df3b8f1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (iOSTechnicalTask.GithubRepoModel) -&gt; Swift.Bool in iOSTechnicalTask.DataManagerImp.(filterRepos in _2FCAA99F9292B0D27D834DE917E1FF06)(_: Swift.Array&lt;iOSTechnicalTask.GithubRepoModel&gt;, forTitlesContaining: Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.Array&lt;iOSTechnicalTask.GithubRepoModel&gt;"
+                  moduleName = "iOSTechnicalTask"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iOSTechnicalTask/iOSTechnicalTask/DataManager/DataManagerImp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25B16E25-5B8A-4558-A5A2-92ED7640BE60"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/UI/ReposList/ReposListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41E857A5-B85C-4D3C-87C8-6B5FC2D5A242"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/DataManager/DataManagerImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "getRepos(containing:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7EF0EE17-E545-4FBD-BAEF-9ECBF13F51F2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/DataManager/DataManagerImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getAllRepos()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "270690AD-23A1-4A79-8A14-BF75632589DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/DataManager/DataManagerImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getRepos(containing:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABA1A045-B810-4778-9F59-CDECFFBC54F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSTechnicalTask/DataManager/DataManagerImp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "filterRepos(_:forTitlesContaining:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
