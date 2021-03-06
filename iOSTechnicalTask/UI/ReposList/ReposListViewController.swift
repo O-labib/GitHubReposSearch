@@ -10,11 +10,11 @@ import UIKit
 class ReposListViewController: UIViewController {
 
     // MARK: Properties
-    lazy var presenter: ReposListPresenter = {
+    private lazy var presenter: ReposListPresenter = {
         DiContainer.instance.resolveReposListPresenter()
     }()
-    let searchController = UISearchController(searchResultsController: nil)
-    var tableViewAdapter = BaseAdapter()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var tableViewAdapter = BaseAdapter()
 
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView! {
@@ -31,13 +31,14 @@ class ReposListViewController: UIViewController {
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    // MARK: View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter.attach(view: self)
         registerTableViewCells()
-        navigationItem.title = "GitHub Repos"
 
+        setupNavigationItem()
         presenter.getRepos(containing: .any)
     }
 
@@ -46,13 +47,13 @@ class ReposListViewController: UIViewController {
         tableView.registerCellFromNib(named: NoResultsCell.identifier)
     }
 
+    private func setupNavigationItem() {
+        navigationItem.title = "GitHub Repos"
+    }
 }
 
+// MARK: Presenter-Exposed functions
 extension ReposListViewController: ReposListView {
-    func reposWerePaginated(newRepos: [GithubRepoModel]) {
-        (tableViewAdapter as? ReposAdapter)?.appendReposUponPagination(newRepos)
-        tableView.insertNewlyPaginatedData(newRepos)
-    }
 
     func showLoader() {
         activityIndicator.startAnimating()
@@ -95,19 +96,30 @@ extension ReposListViewController: ReposListView {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+
+    func reposWerePaginated(newRepos: [GithubRepoModel]) {
+        (tableViewAdapter as? ReposAdapter)?.appendReposUponPagination(newRepos)
+        tableView.insertNewlyPaginatedData(newRepos)
+    }
+
     func didFailLoadingRepos(withErrorMsg errorMsg: String?) {
         tableView.hide()
         networkErrorView.reveal()
         networkErrorView.setErrorMsg(errorMsg)
     }
-
 }
+
+// MARK: SearchController Delegates
 extension ReposListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        presenter.getRepos(containing: searchBar.text)
+        let searchQuery = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard searchQuery != nil && searchQuery != "" else { return }
+
+        presenter.getRepos(containing: searchQuery)
     }
 }
+
+// MARK: TableView DataSource
 extension ReposListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableViewAdapter.tableView(tableView, numberOfRowsInSection: section)
@@ -118,11 +130,15 @@ extension ReposListViewController: UITableViewDataSource {
     }
 
 }
+
+// MARK: TableView Delegate
 extension ReposListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableViewAdapter.tableView(tableView, didSelectRowAt: indexPath)
     }
 }
+
+// MARK: TableView Prefetching
 extension ReposListViewController: UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -137,6 +153,8 @@ extension ReposListViewController: UITableViewDataSourcePrefetching {
     }
 
 }
+
+// MARK: ReposAdapter Delegate
 extension ReposListViewController: ReposAdapterDelegate {
 
     func repoWasSelected(_ repo: GithubRepoModel) {

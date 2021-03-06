@@ -7,15 +7,7 @@
 
 import UIKit
 
-// MARK: Delegate
-protocol ReposListCellDelegate: class {
-
-}
 class ReposListCell: UITableViewCell {
-
-    // MARK: Properties
-    weak var delegate: ReposListCellDelegate?
-    var onReuse: () -> Void = {}
 
     // MARK: Outlets
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -23,7 +15,7 @@ class ReposListCell: UITableViewCell {
     @IBOutlet weak var repoOwnerNameLabel: UILabel!
     @IBOutlet weak var repoCreationDateLabel: UILabel!
 
-    // MARK: Functions
+    // MARK: System Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
@@ -38,12 +30,16 @@ class ReposListCell: UITableViewCell {
         super.prepareForReuse()
         avatarImageView.cancelImageLoad()
     }
+}
+// MARK: Exposed Functions
+extension ReposListCell {
 
     func bindWith(repo: GithubRepoModel) {
         repoTitleLabel.text = repo.title
         repoOwnerNameLabel.text = repo.owner?.name
-        avatarImageView.loadImage(at: repo.owner?.avatarImageUrl)
+        avatarImageView.loadImage(from: repo.owner?.avatarImageUrl)
     }
+
     func cancelImageLoadingTask() {
         avatarImageView.cancelImageLoad()
     }

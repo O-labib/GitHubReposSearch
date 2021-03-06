@@ -10,6 +10,10 @@ import Foundation
 struct PaginationInput {
     var page: Int
     var itemsPerPage: Int = 10
+
+    static var firstPage: PaginationInput {
+        return PaginationInput(page: 0)
+    }
 }
 
 struct PaginationInfo {

@@ -6,21 +6,25 @@
 //
 
 import UIKit
+
+// MARK: ReposAdapter Delegate
 protocol ReposAdapterDelegate: class {
     func tableViewNeedsToPaginateRepos()
     func repoWasSelected(_ repo: GithubRepoModel)
 }
+
 class ReposAdapter: BaseAdapter {
 
-    var repos: [GithubRepoModel]
-    weak var delegate: ReposAdapterDelegate?
-
-    var isPaginating = false
+    private var repos: [GithubRepoModel]
+    private weak var delegate: ReposAdapterDelegate?
+    private var isPaginating = false
 
     init(repos: [GithubRepoModel], delegate: ReposAdapterDelegate) {
         self.repos = repos
         self.delegate = delegate
     }
+
+    // MARK: DataSource Functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         repos.count
     }
@@ -31,11 +35,13 @@ class ReposAdapter: BaseAdapter {
         return cell
     }
 
-    func appendReposUponPagination(_ repos: [GithubRepoModel]) {
-        isPaginating = false
-        self.repos.append(contentsOf: repos)
+    // MARK: Delegate Functions
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repo = repos[indexPath.row]
+        delegate?.repoWasSelected(repo)
     }
 
+    // MARK: PrefetchDelegate Functions
     override func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths where index.row == repos.count - 6 && !isPaginating {
             isPaginating = true
@@ -43,8 +49,12 @@ class ReposAdapter: BaseAdapter {
             break
         }
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repo = repos[indexPath.row]
-        delegate?.repoWasSelected(repo)
+}
+
+extension ReposAdapter {
+
+    func appendReposUponPagination(_ repos: [GithubRepoModel]) {
+        isPaginating = false
+        self.repos.append(contentsOf: repos)
     }
 }

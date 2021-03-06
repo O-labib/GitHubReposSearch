@@ -9,17 +9,20 @@ import UIKit
 
 class RepoDetailsViewController: UIViewController {
 
+    // MARK: Creator
     static func createFromStoryboard(with repo: GithubRepoModel) -> RepoDetailsViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RepoDetailsViewController") as!RepoDetailsViewController
+        let storyboard = UIStoryboard.main
+        let vc = storyboard.instantiateViewController(withIdentifier: self.identifier) as! RepoDetailsViewController
         vc.repo = repo
         return vc
     }
-    var repo: GithubRepoModel!
+
     @IBOutlet weak var repoTitleLabel: UILabel!
     @IBOutlet weak var repoOwnerAvatarImageView: CircularImageView!
     @IBOutlet weak var repoDescriptionLabel: UILabel!
     @IBOutlet weak var repoOwnerNameLabel: UILabel!
+
+    private var repo: GithubRepoModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +34,15 @@ class RepoDetailsViewController: UIViewController {
 
         repoTitleLabel.text = repo.title
         navigationItem.title = repo.title
-        repoOwnerAvatarImageView.loadImage(at: repo.owner?.avatarImageUrl)
+        repoOwnerAvatarImageView.loadImage(from: repo.owner?.avatarImageUrl)
         repoDescriptionLabel.text = repo.description
         repoOwnerNameLabel.text = repo.owner?.name
     }
 
+}
+
+extension UIStoryboard {
+    static var main: UIStoryboard {
+        UIStoryboard(name: "Main", bundle: nil)
+    }
 }

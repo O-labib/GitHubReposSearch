@@ -6,11 +6,12 @@
 //
 
 import UIKit
+
 class ImageLoader {
     private let cachedImages = NSCache<NSURL, UIImage>()
     private var runningLoadingTasks = [UUID: URLSessionDataTask]()
 
-    func loadImage(_ urlString: String?,
+    func loadImage(from urlString: String?,
                    _ completion: @escaping (Result<UIImage, Error>) -> Void) -> UUID? {
 
         guard urlString != nil,
@@ -44,8 +45,8 @@ class ImageLoader {
         return loadingTaskUuid
     }
 
-    func cancelLoad(_ uuid: UUID) {
-        runningLoadingTasks[uuid]?.cancel()
-        runningLoadingTasks.removeValue(forKey: uuid)
+    func cancelLoad(_ taskUuid: UUID) {
+        runningLoadingTasks[taskUuid]?.cancel()
+        runningLoadingTasks.removeValue(forKey: taskUuid)
     }
 }

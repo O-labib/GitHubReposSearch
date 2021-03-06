@@ -10,15 +10,16 @@ import RxSwift
 
 class ReposListPresenterImp: ReposListPresenter {
 
-    var dataManager: DataManager
-    let disposeBag = DisposeBag()
-    var latestPageInfo: PaginationInfo?
-    var latestSearchQuery: String?
+    private let dataManager: DataManager
+    private var view: ReposListView?
+    private let disposeBag = DisposeBag()
+    private var latestPageInfo: PaginationInfo?
+    private var latestSearchQuery: String?
 
     init(dataManager: DataManager) {
         self.dataManager = dataManager
     }
-    var view: ReposListView?
+
     func attach(view: ReposListView) {
         self.view = view
     }
@@ -26,14 +27,14 @@ class ReposListPresenterImp: ReposListPresenter {
         self.view = nil
     }
 
+    // MARK: Initial Request
     func getRepos(containing searchQuery: String? = nil) {
         view?.showLoader()
 
-        let adjustedSearchQuery = adjustSearchQueryIfTooShort(searchQuery)
-        self.latestSearchQuery = adjustedSearchQuery
+        let adjustedSearchQuery = refineAndCacheSearchQuery(searchQuery)
 
         dataManager.getRepos(containing: adjustedSearchQuery,
-                             with: PaginationInput(page: 0))
+                             with: .firstPage)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (result) in
                 let repos = result.repos
@@ -48,10 +49,16 @@ class ReposListPresenterImp: ReposListPresenter {
 
             }).disposed(by: disposeBag)
     }
-    func adjustSearchQueryIfTooShort(_ searchQuery: String?) -> String? {
+    private func refineAndCacheSearchQuery(_ searchQuery: String?) -> String? {
+        let refinedSearchQuery = refineSearchQueryIfTooShort(searchQuery)
+        self.latestSearchQuery = refinedSearchQuery
+        return refinedSearchQuery
+    }
+    private func refineSearchQueryIfTooShort(_ searchQuery: String?) -> String? {
         return (searchQuery?.count ?? 0) < 2 ? nil : searchQuery
     }
 
+    // MARK: Pagination
     func paginateRepos() {
         guard latestPageInfo?.hasNext != false else { return }
 
@@ -74,10 +81,11 @@ class ReposListPresenterImp: ReposListPresenter {
 
 }
 
+// MARK: NetworkErrorView Delegate
 extension ReposListPresenterImp: NetworkErrorViewDelegate {
 
     func networkErrorViewDidTapRetry(_ networkErrorView: NetworkErrorView) {
-        self.getRepos(containing: .any)
+        self.getRepos(containing: latestSearchQuery)
     }
 
 }

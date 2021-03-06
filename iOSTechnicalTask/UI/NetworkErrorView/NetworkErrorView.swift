@@ -12,15 +12,12 @@ protocol NetworkErrorViewDelegate: class {
 class NetworkErrorView: UIView {
 
     // MARK: Outlets
-
-    // MARK: Variable
-    var view: UIView!
     @IBOutlet weak var errorMsgLabel: UILabel!
 
+    // MARK: Properties
     weak var delegate: NetworkErrorViewDelegate?
 
     // MARK: Setup functions
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -32,24 +29,19 @@ class NetworkErrorView: UIView {
     }
 
     private func setup() {
-        if let customView = loadViewFromNib() {
-            self.view = customView
+        guard let view = loadViewFromNib() else { return }
 
-            view.frame = bounds
-            view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        view.frame = bounds
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        subviews.forEach({$0.removeFromSuperview()})
 
-            if view.superview == nil {
-                addSubview(view)
-            }
-
-        }
-
+        addSubview(view)
     }
 
-      private func loadViewFromNib() -> UIView? {
-            let nib = UINib(nibName: "NetworkErrorView", bundle: nil)
-            return nib.instantiate(withOwner: self, options: nil).first as? UIView
-        }
+    private func loadViewFromNib() -> UIView? {
+        let nib = UINib(nibName: NetworkErrorView.identifier, bundle: nil)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
 
     @IBAction func retryAction(_ sender: Any) {
         delegate?.networkErrorViewDidTapRetry(self)
@@ -61,4 +53,3 @@ class NetworkErrorView: UIView {
         }
     }
 }
-

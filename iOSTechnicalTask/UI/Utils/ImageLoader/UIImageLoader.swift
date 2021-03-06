@@ -11,15 +11,22 @@ class UIImageLoader {
     static let shared = UIImageLoader()
 
     private let imageLoader = ImageLoader()
-    private var runningTasksMap = [UIImageView: UUID]()
+    private var runningTasks = [UIImageView: UUID]()
 
     private init() {}
 
-    func load(_ url: String?, into imageView: UIImageView) {
-        imageView.image = UIImage(named: "avatarPlaceHolder")
+    func load(from url: String?, into imageView: UIImageView) {
+        setDefaultPlaceHolder(onImage: imageView)
+        loadImageAndSaveTaskIfSuccess(from: url, into: imageView)
+    }
 
-        let taskUuid = imageLoader.loadImage(url) { result in
-            defer { self.runningTasksMap.removeValue(forKey: imageView) }
+    private func setDefaultPlaceHolder(onImage imageView: UIImageView) {
+        imageView.image = .avatarPlaceHolder
+    }
+
+    private func loadImageAndSaveTaskIfSuccess(from url: String?, into imageView: UIImageView) {
+        let taskUuid = imageLoader.loadImage(from: url) { result in
+            defer { self.runningTasks.removeValue(forKey: imageView) }
             do {
                 let image = try result.get()
                 DispatchQueue.main.async {
@@ -27,20 +34,29 @@ class UIImageLoader {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    imageView.image = UIImage(named: "imageNotFound")
+                    imageView.image = .imageNotFound
                 }
             }
         }
 
         if let taskUuid = taskUuid {
-            runningTasksMap[imageView] = taskUuid
+            runningTasks[imageView] = taskUuid
         }
     }
 
     func cancel(for imageView: UIImageView) {
-        if let taskUuid = runningTasksMap[imageView] {
+        if let taskUuid = runningTasks[imageView] {
             imageLoader.cancelLoad(taskUuid)
-            runningTasksMap.removeValue(forKey: imageView)
+            runningTasks.removeValue(forKey: imageView)
         }
+    }
+}
+
+extension Optional where Wrapped: UIImage {
+    static var avatarPlaceHolder: UIImage? {
+        UIImage(named: "avatarPlaceHolder")
+    }
+    static var imageNotFound: UIImage? {
+        UIImage(named: "imageNotFound")
     }
 }

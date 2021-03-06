@@ -13,6 +13,7 @@ extension NSObject {
     }
 }
 
+// MARK: UIView + Extensions
 extension UIView {
     func setCircular() {
         self.clipsToBounds = true
@@ -27,6 +28,7 @@ extension UIView {
     }
 }
 
+// MARK: UITableView + Extensions
 extension UITableView {
     func registerCellFromNib(named nibFileName: String,
                              atBundle bundle: Bundle? = nil) {
@@ -47,9 +49,11 @@ extension UITableView {
         insertRows(at: newIndices, with: .none)
     }
 }
+
+// MARK: UIImageView + Extensions
 extension UIImageView {
-    func loadImage(at url: String?) {
-        UIImageLoader.shared.load(url, into: self)
+    func loadImage(from url: String?) {
+        UIImageLoader.shared.load(from: url, into: self)
     }
 
     func cancelImageLoad() {
