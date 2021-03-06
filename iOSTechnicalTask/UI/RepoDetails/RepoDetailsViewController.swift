@@ -20,15 +20,15 @@ class RepoDetailsViewController: UIViewController {
     @IBOutlet weak var repoOwnerAvatarImageView: CircularImageView!
     @IBOutlet weak var repoDescriptionLabel: UILabel!
     @IBOutlet weak var repoOwnerNameLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewToRepoDetails()
     }
-    
+
     private func bindViewToRepoDetails() {
         guard repo != nil else { return }
-        
+
         repoTitleLabel.text = repo.title
         navigationItem.title = repo.title
         repoOwnerAvatarImageView.loadImage(at: repo.owner?.avatarImageUrl)

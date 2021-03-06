@@ -22,14 +22,13 @@ class PaginationHelper {
             return Observable.just(PaginatedRepos(repos: [],
                                                   paginationInfo: paginationResult))
         }
-        
-        
+
         let reposForSelectedPage = repoPages[paginationInput.page]
         let paginationInfo = PaginationInfo(currentPage: paginationInput.page,
                                             itemsPerPage: paginationInput.itemsPerPage,
                                             totalPagesCount: repoPages.count,
                                             hasNext: paginationInput.page < repoPages.count - 1)
-        
+
         return Observable.just(PaginatedRepos(repos: reposForSelectedPage, paginationInfo: paginationInfo))
     }
 }

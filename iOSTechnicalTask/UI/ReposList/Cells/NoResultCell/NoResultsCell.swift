@@ -9,16 +9,16 @@ import UIKit
 
 class NoResultsCell: UITableViewCell {
 
-    //MARK: Functions
+    // MARK: Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        
+
     }
 }
 
-//MARK: Delegate
+// MARK: Delegate
 
 protocol NoSearchResultsCellDelegate {
-    
+
 }

@@ -17,7 +17,7 @@ struct PaginationInfo {
     var itemsPerPage: Int
     var totalPagesCount: Int
     var hasNext: Bool
-    
+
     var nextPageInput: PaginationInput {
         return PaginationInput(page: currentPage + 1)
     }

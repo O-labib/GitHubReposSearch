@@ -8,14 +8,15 @@
 import UIKit
 
 class ReposListViewController: UIViewController {
-    
-    //MARK: Properties
+
+    // MARK: Properties
     lazy var presenter: ReposListPresenter = {
         DiContainer.instance.resolveReposListPresenter()
     }()
     let searchController = UISearchController(searchResultsController: nil)
     var tableViewAdapter = BaseAdapter()
-    //MARK: Outlets
+
+    // MARK: Outlets
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
@@ -29,7 +30,7 @@ class ReposListViewController: UIViewController {
         }
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,13 +40,12 @@ class ReposListViewController: UIViewController {
 
         presenter.getRepos(containing: .any)
     }
-    
-    private func registerTableViewCells(){
+
+    private func registerTableViewCells() {
         tableView.registerCellFromNib(named: ReposListCell.identifier)
         tableView.registerCellFromNib(named: NoResultsCell.identifier)
     }
 
-    
 }
 
 extension ReposListViewController: ReposListView {
@@ -57,7 +57,7 @@ extension ReposListViewController: ReposListView {
     func showLoader() {
         activityIndicator.startAnimating()
     }
-    
+
     func hideLoader() {
         activityIndicator.stopAnimating()
     }
@@ -65,21 +65,21 @@ extension ReposListViewController: ReposListView {
     func reposWereLoaded(_ repos: [GithubRepoModel]) {
         updateTableViewForResults(repos)
         showEmptyCellIfNoResults(repos)
-        
+
         setupSearchController()
-        
+
         tableView.reveal()
         networkErrorView.hide()
     }
-    private func updateTableViewForResults(_ repos: [GithubRepoModel]){
+    private func updateTableViewForResults(_ repos: [GithubRepoModel]) {
         guard repos.isEmpty == false else { return }
         tableViewAdapter = ReposAdapter(repos: repos,
                                         delegate: self)
         tableView.reloadSections([0], with: .fade)
     }
-    private func showEmptyCellIfNoResults(_ repos: [GithubRepoModel]){
+    private func showEmptyCellIfNoResults(_ repos: [GithubRepoModel]) {
         guard repos.isEmpty else { return }
-        
+
         let emptyCellIsAlreadyShown = tableView.cellForRow(at: .init(row: 0,
                                                                      section: 0)) as? NoResultsCell != nil
         if emptyCellIsAlreadyShown {
@@ -88,7 +88,7 @@ extension ReposListViewController: ReposListView {
         tableViewAdapter = NoResultsAdapter()
         tableView.reloadSections([0], with: .fade)
     }
-    private func setupSearchController(){
+    private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Repos"
@@ -100,7 +100,7 @@ extension ReposListViewController: ReposListView {
         networkErrorView.reveal()
         networkErrorView.setErrorMsg(errorMsg)
     }
-    
+
 }
 extension ReposListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -112,11 +112,11 @@ extension ReposListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableViewAdapter.tableView(tableView, numberOfRowsInSection: section)
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableViewAdapter.tableView(tableView, cellForRowAt: indexPath)
     }
-    
+
 }
 extension ReposListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -124,26 +124,26 @@ extension ReposListViewController: UITableViewDelegate {
     }
 }
 extension ReposListViewController: UITableViewDataSourcePrefetching {
-    
+
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         tableViewAdapter.tableView(tableView, prefetchRowsAt: indexPaths)
     }
-    
+
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         let repoCells = indexPaths.compactMap({tableView.cellForRow(at: $0) as? ReposListCell})
         repoCells.forEach({
             $0.cancelImageLoadingTask()
         })
     }
-    
+
 }
 extension ReposListViewController: ReposAdapterDelegate {
-    
+
     func repoWasSelected(_ repo: GithubRepoModel) {
         let repoDetailsVc = RepoDetailsViewController.createFromStoryboard(with: repo)
         navigationController?.pushViewController(repoDetailsVc, animated: true)
     }
-   
+
     func tableViewNeedsToPaginateRepos() {
         presenter.paginateRepos()
     }

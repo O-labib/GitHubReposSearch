@@ -16,7 +16,7 @@ class DataManagerImp {
     private var allRepos: [GithubRepoModel]?
 }
 extension DataManagerImp: DataManager {
-    
+
     func getRepos(containing searchQuery: String?, with paginationInput: PaginationInput) -> Observable<PaginatedRepos> {
         getAllRepos()
             .map({ (allRepos) -> [GithubRepoModel] in
@@ -27,7 +27,7 @@ extension DataManagerImp: DataManager {
                                                                  from: repos)
             }
     }
-    
+
     private func getAllRepos() -> Observable<[GithubRepoModel]> {
         guard allRepos == nil else {
             return Observable.just(allRepos!)
@@ -52,8 +52,7 @@ extension DataManagerImp: DataManager {
                                                                 from: data)
                         self.allRepos = repos
                         observer.onNext(repos)
-                    }
-                    else {
+                    } else {
                         observer.onError(error!)
                     }
                 } catch {
@@ -74,4 +73,3 @@ extension DataManagerImp: DataManager {
         return repos.filter({$0.title?.lowercased().contains(searchQuery!.lowercased()) == true})
     }
 }
-

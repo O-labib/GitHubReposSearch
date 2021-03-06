@@ -9,15 +9,15 @@ import UIKit
 
 class UIImageLoader {
     static let shared = UIImageLoader()
-    
+
     private let imageLoader = ImageLoader()
     private var runningTasksMap = [UIImageView: UUID]()
-    
+
     private init() {}
-    
+
     func load(_ url: String?, into imageView: UIImageView) {
         imageView.image = UIImage(named: "avatarPlaceHolder")
-        
+
         let taskUuid = imageLoader.loadImage(url) { result in
             defer { self.runningTasksMap.removeValue(forKey: imageView) }
             do {
@@ -31,12 +31,12 @@ class UIImageLoader {
                 }
             }
         }
-        
+
         if let taskUuid = taskUuid {
             runningTasksMap[imageView] = taskUuid
         }
     }
-    
+
     func cancel(for imageView: UIImageView) {
         if let taskUuid = runningTasksMap[imageView] {
             imageLoader.cancelLoad(taskUuid)
