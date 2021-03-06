@@ -1,6 +1,0 @@
-framework module Pods_iOSTechnicalTask {
-  umbrella header "Pods-iOSTechnicalTask-umbrella.h"
-
-  export *
-  module * { export * }
-}
