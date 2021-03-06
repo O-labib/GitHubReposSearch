@@ -15,7 +15,8 @@ class ReposListCell: UITableViewCell {
 
     //MARK: Properties
     weak var delegate: ReposListCellDelegate?
-    
+    var onReuse: () -> Void = {}
+
     //MARK: Outlets
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var repoTitleLabel: UILabel!
@@ -26,7 +27,6 @@ class ReposListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        avatarImageView.backgroundColor = .orange
     }
     
     override func layoutSubviews() {
@@ -34,9 +34,18 @@ class ReposListCell: UITableViewCell {
         avatarImageView.setCircular()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.cancelImageLoad()
+    }
+    
     func bindWith(repo: GithubRepoModel) {
         repoTitleLabel.text = repo.title
         repoOwnerNameLabel.text = repo.owner?.name
+        avatarImageView.loadImage(at: repo.owner?.avatarImageUrl)
+    }
+    func cancelImageLoadingTask() {
+        avatarImageView.cancelImageLoad()
     }
 }
 

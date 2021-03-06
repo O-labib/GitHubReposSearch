@@ -47,3 +47,12 @@ extension UITableView {
         insertRows(at: newIndices, with: .none)
     }
 }
+extension UIImageView {
+    func loadImage(at url: String?) {
+        UIImageLoader.shared.load(url, into: self)
+    }
+    
+    func cancelImageLoad() {
+        UIImageLoader.shared.cancel(for: self)
+    }
+}

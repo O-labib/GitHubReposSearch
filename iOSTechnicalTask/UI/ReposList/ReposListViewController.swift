@@ -129,14 +129,19 @@ extension ReposListViewController: UITableViewDataSourcePrefetching {
         tableViewAdapter.tableView(tableView, prefetchRowsAt: indexPaths)
     }
     
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        let repoCells = indexPaths.compactMap({tableView.cellForRow(at: $0) as? ReposListCell})
+        repoCells.forEach({
+            $0.cancelImageLoadingTask()
+        })
+    }
+    
 }
 extension ReposListViewController: ReposAdapterDelegate {
     
     func repoWasSelected(_ repo: GithubRepoModel) {
         let repoDetailsVc = RepoDetailsViewController.createFromStoryboard(with: repo)
         navigationController?.pushViewController(repoDetailsVc, animated: true)
-//        present(repoDetailsVc, animated: true, completion: nil)
-//        print(repo)
     }
    
     func tableViewNeedsToPaginateRepos() {

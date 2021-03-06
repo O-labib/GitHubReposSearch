@@ -17,7 +17,7 @@ class RepoDetailsViewController: UIViewController {
     }
     var repo: GithubRepoModel!
     @IBOutlet weak var repoTitleLabel: UILabel!
-    @IBOutlet weak var repoOwnerAvatarImageView: UIImageView!
+    @IBOutlet weak var repoOwnerAvatarImageView: CircularImageView!
     @IBOutlet weak var repoDescriptionLabel: UILabel!
     @IBOutlet weak var repoOwnerNameLabel: UILabel!
     
@@ -31,6 +31,7 @@ class RepoDetailsViewController: UIViewController {
         
         repoTitleLabel.text = repo.title
         navigationItem.title = repo.title
+        repoOwnerAvatarImageView.loadImage(at: repo.owner?.avatarImageUrl)
         repoDescriptionLabel.text = repo.description
         repoOwnerNameLabel.text = repo.owner?.name
     }

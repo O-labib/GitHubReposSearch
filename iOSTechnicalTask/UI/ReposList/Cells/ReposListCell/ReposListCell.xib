@@ -18,7 +18,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IdG-i5-9nF">
                         <rect key="frame" x="16" y="8" width="384" height="215"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BHd-oI-Bg5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BHd-oI-Bg5" customClass="CircularImageView" customModule="iOSTechnicalTask" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="66" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BHd-oI-Bg5" secondAttribute="height" id="UPs-Wg-bjr"/>
