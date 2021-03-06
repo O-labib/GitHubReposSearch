@@ -8,6 +8,7 @@
 import UIKit
 
 struct GithubRepoModel: Decodable {
+    
     var id: Int?
     var title: String?
     var description: String?

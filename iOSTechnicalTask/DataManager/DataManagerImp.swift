@@ -33,24 +33,32 @@ extension DataManagerImp: DataManager {
     }
 }
 
-fileprivate extension Observable where Element == [GithubRepoModel] {
+extension Observable where Element == [GithubRepoModel] {
     func filtered(forTitlesContaining searchQuery: String?) -> Observable<[GithubRepoModel]> {
         map({ (allRepos) -> [GithubRepoModel] in
-            guard searchQuery != nil && searchQuery != "" else {
-                return allRepos
-            }
-            return allRepos
-                .filter({$0
-                            .title?
-                            .lowercased()
-                            .contains(searchQuery!.lowercased()) == true})
+            allRepos.filtered(forTitlesContaining: searchQuery)
         })
     }
 
     func paginated(with paginationInput: PaginationInput) -> Observable<PaginatedRepos> {
-        flatMap { (repos) -> Observable<PaginatedRepos> in
-            return PaginationHelper.shared.getPaginatedRepos(with: paginationInput,
-                                                           from: repos)
+        map { (repos) -> PaginatedRepos in
+            repos.paginated(with: paginationInput)
         }
+    }
+}
+extension Array where Element == GithubRepoModel {
+    func filtered(forTitlesContaining searchQuery: String?) -> [GithubRepoModel] {
+            guard searchQuery != nil && searchQuery != "" else {
+                return self
+            }
+            return self
+                .filter({$0
+                            .title?
+                            .lowercased()
+                            .contains(searchQuery!.lowercased()) == true})
+        }
+    func paginated(with paginationInput: PaginationInput) -> PaginatedRepos {
+        PaginationHelper.shared.getPaginatedRepos(with: paginationInput,
+                                                  from: self)
     }
 }

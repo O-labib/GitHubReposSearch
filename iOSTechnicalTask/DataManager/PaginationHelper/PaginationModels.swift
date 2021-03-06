@@ -8,6 +8,8 @@
 import Foundation
 
 struct PaginationInput {
+    
+    /// pagination is assumed to start at page 0
     var page: Int
     var itemsPerPage: Int = 10
 

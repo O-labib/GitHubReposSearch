@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import RxSwift
 
 class PaginationHelper {
     private init() {}
     static let shared = PaginationHelper()
-    func getPaginatedRepos(with paginationInput: PaginationInput, from allRepos: [GithubRepoModel]) -> Observable<PaginatedRepos> {
+    func getPaginatedRepos(with paginationInput: PaginationInput, from allRepos: [GithubRepoModel]) -> PaginatedRepos {
 
         let repoPages = allRepos.dividedIntoPages(ofSize: paginationInput.itemsPerPage)
         guard repoPages.count > paginationInput.page else {
@@ -19,8 +18,8 @@ class PaginationHelper {
                                                   itemsPerPage: paginationInput.itemsPerPage,
                                                   totalPagesCount: repoPages.count,
                                                   hasNext: false)
-            return Observable.just(PaginatedRepos(repos: [],
-                                                  paginationInfo: paginationResult))
+            return PaginatedRepos(repos: [],
+                                                  paginationInfo: paginationResult)
         }
 
         let reposForSelectedPage = repoPages[paginationInput.page]
@@ -29,7 +28,7 @@ class PaginationHelper {
                                             totalPagesCount: repoPages.count,
                                             hasNext: paginationInput.page < repoPages.count - 1)
 
-        return Observable.just(PaginatedRepos(repos: reposForSelectedPage, paginationInfo: paginationInfo))
+        return PaginatedRepos(repos: reposForSelectedPage, paginationInfo: paginationInfo)
     }
 }
 
